@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Provides payment functionality.
+ */
+
+/**
+ * Implements hook_entity_bundle_info().
+ *
+ * Use payment type plugins as commerce_payment bundles.
+ */
+function commerce_payment_entity_bundle_info() {
+  $bundles = [];
+  $payment_type_manager = \Drupal::service('plugin.manager.commerce_payment_type');
+  foreach ($payment_type_manager->getDefinitions() as $payment_type_id => $definition) {
+    $bundles['commerce_payment'][$payment_type_id] = $definition['label'];
+  }
+}

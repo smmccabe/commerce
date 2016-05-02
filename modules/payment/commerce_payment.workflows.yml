@@ -1,0 +1,38 @@
+payment_credit_card:
+  id: payment_credit_card
+  group: payment
+  label: 'Credit Card'
+  states:
+    new:
+      label: New
+    pending:
+      label: Pending
+    completed:
+      label: Completed
+    canceled:
+      label: Canceled
+    partally_refunded:
+      label: Refunded
+    refunded:
+      label: Refunded
+  transitions:
+    authorize:
+      label: 'Authorize payment'
+      from: [new]
+      to: pending
+    capture:
+      label: 'Capture payment'
+      from: [pending]
+      to: completed
+    charge:
+      label: 'Charge payment'
+      from: [new]
+      to: completed
+    cancel:
+      label: 'Cancel payment'
+      from: [new, pending]
+      to:   canceled
+    refund:
+      label: 'Refund payment'
+      from: [completed]
+      to: refunded
