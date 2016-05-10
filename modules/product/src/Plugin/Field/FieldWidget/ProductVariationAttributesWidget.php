@@ -177,6 +177,15 @@ class ProductVariationAttributesWidget extends WidgetBase implements ContainerFa
       if ($attribute['required'] && count($attribute['values']) === 1) {
         $element['attributes'][$field_name]['#disabled'] = TRUE;
       }
+      // Optimize the UX of optional attributes:
+      // - Hide attributes that have no values.
+      // - Require attributes that have a value on each variation.
+      if (empty($element['attributes'][$field_name]['#options'])) {
+        $element['attributes'][$field_name]['#access'] = FALSE;
+      }
+      if (!isset($element['attributes'][$field_name]['#empty_value'])) {
+        $element['attributes'][$field_name]['#required'] = TRUE;
+      }
     }
 
     return $element;
