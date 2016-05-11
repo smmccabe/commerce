@@ -184,7 +184,7 @@ class ProductVariationAttributesWidget extends WidgetBase implements ContainerFa
         $element['attributes'][$field_name]['#access'] = FALSE;
       }
       if (!isset($element['attributes'][$field_name]['#empty_value'])) {
-        $element['attributes'][$field_name]['#required'] = TRUE;
+        //$element['attributes'][$field_name]['#required'] = TRUE;
       }
     }
 
