@@ -24,7 +24,7 @@ install:
   # Install latest Drush 7.
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - composer self-update
-  - composer global require --no-interaction --prefer-source drush/drush:dev-master
+  - composer global require --no-interaction --prefer-source drush/drush:8.*
 
   # Make sure we don't fail when checking out projects
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
